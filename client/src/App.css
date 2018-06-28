@@ -1,28 +1,37 @@
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2em;
+  white-space: pre
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.App code {
+  margin: 2em;
+  margin-top: 0;
+  padding: 0;
+  text-align: left;
+  font-size: 2em;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+h3 {
+  font-size: 2.5em;
+  margin: 1em;
+  padding: 0;
+  border: 0
 }
 
-.App-title {
-  font-size: 1.5em;
+button {
+  font-size: 1em;
+  font-family: "Courier New", monospace;
+  border: 2px solid #000;
+  padding: 10px 25px;
 }
 
-.App-intro {
-  font-size: large;
+button:hover {
+  background-color: rgb(255, 235, 59);
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+button:active {
+  background-color: rgb(255, 244, 142);
 }
