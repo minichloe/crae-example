@@ -1,55 +1,26 @@
 const express = require('express')
-const http = require('http')
-const giphyapi = require('giphy-api')
-const base64 = require('base64-stream')
+const cowsay = require('cowsay')
+const cors = require('cors')
 
 // Create the server
 const app = express()
 
-// Get a random cat gif url with Giphy API
-const getCatGif = async () => {
-  const item = await giphyapi().random('cat')
-  // Download the gif
-  const gif = await download(item.data.image_url)
-  // Encode the gif then return it
-  const encodedGif = await encodeGif(gif)
-  return encodedGif
-}
-
-// Helper function to download
-const download = async url => {
-  return new Promise((resolve, reject) => {
-    const gif = http.get(url.replace('https', 'http'))
-    gif.on('response', res => {
-      resolve(res)
-    })
-    gif.on('error', err => {
-      reject(err)
-    })
-  })
-}
-
-// Helper function to encode the downloaded gif
-const encodeGif = async gif => {
-  let result = `data:image/gif;base64,`
-  const code = gif.pipe(base64.encode())
-  return new Promise((resolve, reject) => {
-    code.on('readable', () => {
-      const read = code.read()
-      if (read) result += read.toString()
-      else resolve(result)
-    })
-    code.on('error', err => {
-      reject(err)
-    })
-  })
-}
-
-// Serve our single api route /cat that returns a base64 encoded gif
-app.get('/api/cat', async (req, res, next) => {
+// Serve our api route /cow that returns a custom talking text cow
+app.get('/api/cow/:say', cors(), async (req, res, next) => {
   try {
-    const gif = await getCatGif()
-    res.json({ gif })
+    const text = req.params.say
+    const moo = cowsay.say({ text })
+    res.json({ moo })
+  } catch (err) {
+    next(err)
+  }
+})
+
+// Serve our base route that returns a Hellow World cow
+app.get('/api/cow/', cors(), async (req, res, next) => {
+  try {
+    const moo = cowsay.say({ text: 'Hello World!' })
+    res.json({ moo })
   } catch (err) {
     next(err)
   }
