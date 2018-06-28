@@ -35,3 +35,16 @@ button:hover {
 button:active {
   background-color: rgb(255, 244, 142);
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  font-family: "Courier New", monospace;
+}
+
+input {
+  font-size: 1.5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border: 1px solid grey
+}
