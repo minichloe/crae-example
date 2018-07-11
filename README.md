@@ -1,5 +1,5 @@
 # CUSTOM COWSAY
-A fun talking cow generator with create-react-app and Express.
+A fun talking cow generator with Create-React-App and Express.
 
 This repo is an example of how to connect an Express backend with React, and subsequently deploying to Heroku.
 
@@ -13,5 +13,5 @@ This is ready for deployment, assuming you have an account with Heroku and have 
 Note: This repo uses NPM. For yarn, you will have to change the command in package.json to `"heroku-postbuild": "cd client && yarn && yarn build"`
 
 1. Clone this repo.
-2. In the root directory of the repo, run 'heroku create'.
-3. Run 'git push heroku master' which will build the frontend and deploy it and the backend to Heroku.
+2. In the root directory of the repo, run `heroku create`.
+3. Run `git push heroku master` which will build the frontend and deploy it and the backend to Heroku.
