@@ -29,7 +29,6 @@ class App extends Component {
 
   handleChange = evt => {
     this.setState({ [evt.target.name]: evt.target.value })
-    console.log(this.state.text)
   }
 
   render() {
